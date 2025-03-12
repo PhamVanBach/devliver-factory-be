@@ -1,0 +1,27 @@
+node_modules/
+
+# environment
+.env
+.env.staging
+.env.production
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# misc
+*.tmp
+*.bak
+
+# dependencies
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# IDE
+.idea
+.vscode
+
+# build
+dist
