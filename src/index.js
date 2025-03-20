@@ -3,6 +3,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
+import orderRoutes from "./routes/orders.js";
+import productRoutes from "./routes/products.js";
+import cartRoutes from "./routes/cart.js";
 
 const app = express();
 
@@ -12,6 +15,9 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
 
 // MongoDB connection
 mongoose
@@ -21,7 +27,16 @@ mongoose
 
 // Basic route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the authentication API" });
+  res.json({
+    message: "Welcome to the delivery factory API",
+    version: "1.0.0",
+    endpoints: {
+      auth: "/api/auth",
+      products: "/api/products",
+      cart: "/api/cart",
+      orders: "/api/orders",
+    },
+  });
 });
 
 // Error handling middleware
